@@ -8,4 +8,5 @@ include_directories(.)
 add_executable(strext_h
         example.c
         strext.c
-        strext.h)
+        strext.h
+)
