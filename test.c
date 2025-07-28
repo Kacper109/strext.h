@@ -1,3 +1,13 @@
+/**
+ * @file test.c
+ * @author Kacper Dziadek
+ * @brief Testing for strext
+ * @version 0.1
+ * @date 2025-07-28
+ *
+ * @copyright Copyright (c) 2025 Kacper Dziadek
+ *
+ */
 #include "strext.h"
 #include <assert.h>
 #include <stdio.h>

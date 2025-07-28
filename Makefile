@@ -13,6 +13,7 @@ lib: build strext.c strext.h
 	$(CC) -c strext.c -o ${BUILD}/strext.o -fPIC ${CFLAGS}
 	$(AR) rc ${BUILD}/libstrext.a ${BUILD}/strext.o
 
+
 build:
 	mkdir ${BUILD}
 
