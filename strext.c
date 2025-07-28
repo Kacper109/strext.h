@@ -1,7 +1,3 @@
-//
-// Created by kittech on 7/20/25.
-//
-
 #include "strext.h"
 
 #include <assert.h>
