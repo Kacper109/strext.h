@@ -1,0 +1,1 @@
+-std=c23 -g3 -Og -Wall -Wextra -Werror -fsanitize=address,undefined -fsanitize-trap

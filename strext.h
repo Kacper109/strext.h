@@ -5,30 +5,28 @@
 #ifndef STREXT_H
 #define STREXT_H
 #include <stddef.h>
+#include <stdint.h>
 #include <string.h>
 
+#define UTF8(str) (const utf8_char *const)(str)
+
+typedef uint8_t utf8_char;
 
 typedef struct string {
     size_t len;
-    char *str;
-} string_t;
+    const utf8_char *const rstr;
+} str_t;
 
-typedef struct string_mut {
-    size_t len;
-    char *str;
-} string_mut_t;
+typedef enum ordering {
+    ordering_Less = -1,
+    ordering_Equal = 0,
+    ordering_Greater = 1,
+} ordering_t;
 
-#define string_empty(name,length) char rstr_##name[length+1] = {}; \
-    name = (string_t){ .len = length, .str = rstr_##name };
+size_t utf8_strlen(const utf8_char *str);
+str_t str_init(const utf8_char *utf8_str);
+str_t str_rinit(const char *rstr);
+ordering_t str_cmp(const str_t *str1, const str_t *str2);
+bool str_eq(const str_t *str1, const str_t *str2);
 
-void string_new(string_t *dest, char *rstr);
-
-void string_clone(const string_t *dest, const string_t *src);
-
-
-// TODO: Gotta implement
-void string_concat(const string_t *dest, const string_t *src1, const string_t *src2);
-
-// TODO: Gotta implement
-string_mut_t string_mut_copy(const string_t *s);
-#endif //STREXT_H
+#endif // STREXT_H
