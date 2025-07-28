@@ -1,6 +1,6 @@
 CFLAGS = -std=c23 -g3 -Og -Wall -Wextra -Werror -fsanitize=address,undefined -fsanitize-trap
 CC = /usr/bin/clang
-AR = /usr/bin/llvm-ar
+AR = /usr/bin/ar
 BUILD = build
 
 all: build test clean
