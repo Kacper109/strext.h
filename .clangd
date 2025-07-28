@@ -1,0 +1,17 @@
+CompileFlags:
+    Add: [
+            # clang warning flags, these flags will be added to the clang command line when clangd analyze the code.
+            -std=c23,
+
+            -g3,
+            -Og,
+            -Wall,
+            -Wextra,
+            -Werror,
+            -ggdb,
+            -fsanitize=address,
+            -fsanitize=undefined,
+            # You can also add header include paths here, each prefixed with '-I', one path per line, like this:
+            # -I/usr/include
+        ]
+# for more options, type ctrl + space to bring up the auto-completion list
