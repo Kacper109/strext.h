@@ -23,7 +23,7 @@
 typedef uint8_t utf8_char;
 
 typedef struct string {
-    size_t len;
+    const size_t len;
     const utf8_char *const rstr;
 } str_t;
 
