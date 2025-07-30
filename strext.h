@@ -24,7 +24,7 @@ typedef uint8_t utf8_char;
 
 typedef struct string {
     const size_t len;
-    const utf8_char *const rstr;
+    const utf8_char *const utf8_str;
 } str_t;
 
 typedef enum ordering {
@@ -39,7 +39,7 @@ typedef enum ordering {
  * @param str Unsigned char
  * @return size_t Length
  */
-size_t utf8_strlen(const utf8_char *str);
+size_t utf8_strlen(const utf8_char *utf8_str);
 
 /**
  * @brief Creates new sized immutable string
@@ -55,7 +55,7 @@ str_t str_init(const utf8_char *utf8_str);
  * @param rstr Signed C char
  * @return str_t Sized immutable string
  */
-str_t str_rinit(const char *rstr);
+str_t str_raw_init(const char *raw_str);
 
 /**
  * @brief Compares two strings
