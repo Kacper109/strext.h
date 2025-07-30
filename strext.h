@@ -21,10 +21,12 @@
 #define UTF8(str) (const utf8_char *const)(str)
 
 typedef uint8_t utf8_char;
+typedef uint8_t const *utf8_raw_str;
+typedef char const *char_raw_str;
 
-typedef struct string {
+typedef struct {
     const size_t len;
-    const utf8_char *const utf8_str;
+    const utf8_raw_str utf8_str;
 } str_t;
 
 typedef enum ordering {
@@ -39,7 +41,7 @@ typedef enum ordering {
  * @param str Unsigned char
  * @return size_t Length
  */
-size_t utf8_strlen(const utf8_char *utf8_str);
+size_t utf8_len(const utf8_char *utf8_str);
 
 /**
  * @brief Creates new sized immutable string
@@ -47,7 +49,7 @@ size_t utf8_strlen(const utf8_char *utf8_str);
  * @param utf8_str Unsigned char
  * @return str_t Sized immutable string
  */
-str_t str_init(const utf8_char *utf8_str);
+str_t str_from_utf8(const utf8_char *utf8_str);
 
 /**
  * @brief Creates new sized immutable string
@@ -55,7 +57,7 @@ str_t str_init(const utf8_char *utf8_str);
  * @param rstr Signed C char
  * @return str_t Sized immutable string
  */
-str_t str_raw_init(const char *raw_str);
+str_t str_from_char(const char *raw_str);
 
 /**
  * @brief Compares two strings
@@ -75,5 +77,10 @@ ordering_t str_cmp(const str_t *str1, const str_t *str2);
  * @return false Strings are not equal
  */
 bool str_eq(const str_t *str1, const str_t *str2);
+
+size_t str_len(const str_t *str);
+
+utf8_raw_str str_to_utf8(const str_t *str);
+char_raw_str str_to_char(const str_t *str);
 
 #endif // STREXT_H

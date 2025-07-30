@@ -15,10 +15,10 @@
 void test_cmp() {
     printf("-- Test: Compare String 0/3 --\n");
 
-    str_t str1 = str_raw_init("Hello World!");
-    str_t str2 = str_raw_init("Hello World");
-    str_t str3 = str_raw_init("");
-    str_t str4 = str_raw_init("Hello World!");
+    str_t str1 = str_from_char("Hello World!");
+    str_t str2 = str_from_char("Hello World");
+    str_t str3 = str_from_char("");
+    str_t str4 = str_from_char("Hello World!");
 
     assert(str_cmp(&str1, &str2) == ordering_Greater);
     printf("-- Test: Compare String 1/3 --\n");
@@ -33,10 +33,10 @@ void test_cmp() {
 void test_eq() {
     printf("-- Test: Compare Equal 0/3 --\n");
 
-    str_t str1 = str_raw_init("Hello World!");
-    str_t str2 = str_raw_init("Hello World");
-    str_t str3 = str_raw_init("");
-    str_t str4 = str_raw_init("Hello World!");
+    str_t str1 = str_from_char("Hello World!");
+    str_t str2 = str_from_char("Hello World");
+    str_t str3 = str_from_char("");
+    str_t str4 = str_from_char("Hello World!");
 
     assert(str_eq(&str1, &str2) == false);
     printf("-- Test: Compare Equal 1/3 --\n");
