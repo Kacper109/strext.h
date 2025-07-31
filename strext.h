@@ -39,6 +39,15 @@ typedef enum ordering {
     ordering_Greater = 1,
 } ordering_t;
 
+#define str_from(str) _Generic(  \
+    str,                         \
+    utf8_raw_str: str_from_utf8, \
+    char *: str_from_char)(str)
+
+#define str_obj_from(str) _Generic(  \
+    str,                         \
+    utf8_raw_str: str_obj_from_utf8, \
+    char *: str_obj_from_char)(str)
 
 str_t str_from_utf8(utf8_raw_str utf8_str);
 
