@@ -11,18 +11,18 @@
 #include "strext.h"
 #include <string.h>
 
-size_t utf8_len(const utf8_raw_str utf8_str) {
-    return strlen((const char *)(utf8_str));
+size_t utf8_len(utf8_raw_str utf8_str) {
+    return strlen((char *)(utf8_str));
 }
 
-str_t str_from_utf8(const utf8_raw_str utf8_str) {
+str_t str_from_utf8(utf8_raw_str utf8_str) {
     return (str_t){
         .len = utf8_len(utf8_str),
         .utf8_str = utf8_str,
     };
 }
 
-str_t str_from_char(const char_raw_str raw_str) {
+str_t str_from_char(char_raw_str raw_str) {
     return str_from_utf8(UTF8(raw_str));
 }
 
@@ -50,4 +50,9 @@ ordering_t str_cmp(const str_t *const str1, const str_t *const str2) {
 bool str_eq(const str_t *const str1, const str_t *const str2) {
     return str_cmp(str1, str2) == ordering_Equal;
 }
+
+strh_t *strh_from_utf8(const utf8_raw_str utf8_str) {
+    return (strh_t *)malloc(sizeof(size_t) + sizeof(utf8_char) * utf8_len(utf8_str));
+}
+
 
