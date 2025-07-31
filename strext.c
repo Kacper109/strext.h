@@ -9,6 +9,8 @@
  *
  */
 #include "strext.h"
+#include <stddef.h>
+#include <stdlib.h>
 #include <string.h>
 
 size_t utf8_len(utf8_raw_str utf8_str) {
@@ -51,8 +53,17 @@ bool str_eq(const str_t *const str1, const str_t *const str2) {
     return str_cmp(str1, str2) == ordering_Equal;
 }
 
-strh_t *strh_from_utf8(const utf8_raw_str utf8_str) {
-    return (strh_t *)malloc(sizeof(size_t) + sizeof(utf8_char) * utf8_len(utf8_str));
+str_obj_t str_obj_from_utf8(utf8_raw_str utf8_str) {
+    size_t str_size = (utf8_len(utf8_str) + 1) * sizeof(utf8_char);
+    utf8_raw_str raw_str = malloc(str_size);
+    memcpy((void *)raw_str, utf8_str, str_size);
+    str_obj_t obj = {
+        .utf8_str = raw_str,
+        .len = utf8_len(utf8_str),
+    };
+    return obj;
 }
 
-
+str_obj_t str_obj_from_char(char_raw_str char_str) {
+    return str_obj_from_utf8((utf8_raw_str)char_str);
+}

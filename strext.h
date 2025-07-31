@@ -30,14 +30,15 @@ typedef struct {
 
 typedef struct {
     size_t len;
-    char const utf8_str[];
-} strh_t;
+    const utf8_raw_str utf8_str;
+} str_obj_t;
 
 typedef enum ordering {
     ordering_Less = -1,
     ordering_Equal = 0,
     ordering_Greater = 1,
 } ordering_t;
+
 
 str_t str_from_utf8(utf8_raw_str utf8_str);
 
@@ -55,6 +56,8 @@ ordering_t str_cmp(const str_t *str1, const str_t *str2);
 
 bool str_eq(const str_t *str1, const str_t *str2);
 
-strh_t *strh_from_utf8(utf8_raw_str utf8_str);
+str_obj_t str_obj_from_utf8(utf8_raw_str utf8_str);
+
+str_obj_t str_obj_from_char(char_raw_str char_str);
 
 #endif // STREXT_H
